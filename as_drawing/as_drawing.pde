@@ -1,5 +1,7 @@
 import processing.serial.*;
-Serial myPort;
+Serial myPort;  // シリアル通信用のオブジェクト
+
+String strSerial = null;  // シリアル通信で受信した文字列
 
 void setup() {
     size(600, 800);
@@ -17,6 +19,6 @@ void serialEvent(Serial myPort) {
     String inString = myPort.readStringUntil('\n');
     if (inString != null) {
         inString = trim(inString);
-        // println(inString);
+        strSerial = inString;
     }
 }
